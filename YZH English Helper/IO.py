@@ -4,8 +4,10 @@ from colorama import Fore, Back, Style
 from typing import Any
 from inspect import getframeinfo, stack, currentframe
 from itertools import chain
-from pickle import load, dump
-from os import remove, getcwd
+from pickle import load as Load
+from pickle import dump
+from os import remove, getcwd, listdir
+from os.path import split, splitext
 
 colorama.init()
 
@@ -72,9 +74,43 @@ def save(data: Any, path: str | None = None):
                     break
             if path is None:
                 path = getcwd() + '\\' + 'Unknown.save'
-    print(path)
+    with open(path, 'wb') as fb:
+        dump(data, fb)
+
+def load(path: str | list[str] | None = None) -> dict[str, Any]:
+    """
+    从文件加载对象
+
+    Args:
+        path (str | list[str] | None, optional): 文件路径，可以用列表. Defaults to None.
+
+    Returns:
+        dict[str, Any]: 每个文件名和对应对象
+    """
+    if type(path) == str:
+        path = [path]
+    elif path is None:
+        path = []
+        for f in listdir(getcwd()):
+            if f.endswith('.save'):
+                path.append(getcwd() + '\\' + f)
+    res = {}
+    for file in path:
+        with open(file, 'rb') as fb:
+            info = Load(fb)
+        name = splitext(split(file)[1])[0]
+        res[name] = info
+    return res
 
 if __name__ == '__main__':
     debug()
     print('Hello, world!', 'I love Yzh!', [1, 1, 4, 5, 1, 4], fore = Fore.BLACK, back = Back.GREEN, end = '\n')
     print(input('Input something: ', fore = Fore.RED), fore = Fore.BLACK, back = Back.WHITE)
+    
+    test = []
+    test.append(test)
+    
+    save(test)
+    res = load()
+    remove(getcwd() + '\\' + 'test.save')
+    print(res)

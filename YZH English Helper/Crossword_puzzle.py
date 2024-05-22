@@ -5,9 +5,8 @@ from time import time, sleep
 from enum import Enum
 from IO import print, input, Fore, Back, debug, Style
 from random import shuffle
-
-class Crossword_puzzle_saver:
-    pass
+from os import getcwd
+from os.path import splitext, isfile
 
 class Crossword_puzzle_maker:
     """
@@ -112,7 +111,6 @@ class Crossword_puzzle_maker:
         self.list: list[tuple[str, str]] = []  # 单词、句子
         self.puzzle: list[list[Crossword_puzzle_maker.Word]] = [[self.Word(self.Word.Type.WHITE) for _ in range(col)] for _ in range(row)]  # 字谜
         self.prompt: list[dict[int, list[str]]] = [{}, {}]  # 提示 [0] 为行的提示，[1] 为列的提示
-        self.writer: Crossword_puzzle_saver = Crossword_puzzle_saver()  # 保存器
     
     def input_words_and_sentences(self) -> None:
         """
@@ -456,12 +454,46 @@ class Crossword_puzzle_maker:
                     print(' ', back = Back.RED, end = '')
             print()
 
+class Crossword_puzzle_saver:
+    """
+    英语字谜保存器
+    """
+    
+    def format(self, path: str = getcwd() + '\\' + 'puzzle.docx'):
+        """
+        获得合法的保存路径
+
+        Args:
+            path (str, optional): 输入的保存路径. Defaults to ''.
+        """
+        # if not path.endswith('.txt') and not path.endswith('.docx'):
+        #     print('ERROR: The filename extension of the file is not valid.', fore = Fore.WHITE, back = Back.RED)
+        #     print('The extension should be either ".txt" or ".docx".', fore = Fore.RED)
+        #     print('Defaulting to ".docx".', fore = Fore.RED)
+        #     return splitext(path)[0] + '.docx'
+        if isfile(path):
+            print('WARNING: The file already exists.', fore = Fore.WHITE, back = Back.MAGENTA)
+            return splitext(path)[0] + '_new_' + str(int(time() * 1000)) + splitext(path)[1]
+        return path
+    
+    def save_puzzle(self, puzzle: Crossword_puzzle_maker) -> None:
+        """
+        保存字谜
+
+        Args:
+            puzzle (Crossword_puzzle_maker): 生成的字谜
+        """
+        
+
 if __name__ == '__main__':
     tester = Crossword_puzzle_maker(row = 30, col = 30)
-    tester.input_words_and_sentences()
-    tester.make_puzzle()
-    tester.print_puzzle()
-    tester.print_answer()
+    # tester.input_words_and_sentences()
+    # tester.make_puzzle()
+    # tester.print_puzzle()
+    # tester.print_answer()
+    
+    saver = Crossword_puzzle_saver()
+    saver.save_puzzle(tester)
 
 """
 baby I have a baby brother.
