@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Crossword Puzzle maker - by XuYueming</title>
+        <meta charset="utf-8">
+        <meta name="author" content="XuYueming">
+        <meta name="description" content="Crossword Puzzle maker - by XuYueming">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="favicon.ico" />
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="Info">
+                <p id="version">
+                    Version: 0.0.0
+                </p>
+                <p id="build">
+                    Build date: 2024-06-02
+                </p>
+            </div>
+            <div id="title">
+                <h1>Crossword Puzzle maker</h1>
+                <h2> - by XuYueming</h2>
+            </div>
+            <div id="help">
+                <a href="https://github.com/XuYueming520/English_Helper">仓库</a>
+                <a href="https://github.com/XuYueming520">作者</a>
+            </div>
+        </div>
+        
+        <div id="main">
+            <table id="puzzle"></table>
+            <div class="prompt">
+                <p class="prompt-name">Row:</p>
+                <table id="prompt-list"></table>
+            </div>
+            <div class="prompt">
+                <p class="prompt-name">Col:</p>
+                <table id="prompt-list"></table>
+            </div>
+            <div id="input">
+                <input type="button" value="样式设置"/>
+                <input type="button" value="导出"/>
+                <input type="button" value="导入"/>
+                <ol id="words"></ol>
+            </div>
+        </div>
+        
+        <div id="style">
+            <!-- 样式设置 -->
+        </div>
+        
+        <div id="save">
+            <!-- 导出 -->
+        </div>
+    </body>
+
+</html>
