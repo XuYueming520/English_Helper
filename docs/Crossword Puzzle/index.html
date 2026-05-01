@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crossword Puzzle Maker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="XuYueming">
+    <meta name="description" content="Crossword Puzzle maker - browser version">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="page-header">
+        <div>
+            <p class="meta-line">Version: <span id="version-number"></span></p>
+            <p class="meta-line">Build: <span id="build-time"></span></p>
+        </div>
+        <div class="title-block">
+            <h1>Crossword Puzzle Maker</h1>
+            <p>HTML first iteration based on the Python DFS generator.</p>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section class="panel controls-panel">
+            <h2>Settings</h2>
+            <div class="settings-grid">
+                <label>
+                    Rows
+                    <input type="number" id="rows-input">
+                </label>
+                <label>
+                    Columns
+                    <input type="number" id="cols-input">
+                </label>
+                <label>
+                    Max remain
+                    <input type="number" id="max-remain-input">
+                </label>
+                <label>
+                    Seed
+                    <input type="text" id="seed-input">
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="auto-seed-input">
+                    Auto seed
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="must-cross-input">
+                    Must cross existing words
+                </label>
+            </div>
+
+            <div class="toolbar">
+                <button type="button" id="add-entry-button">Add entry</button>
+                <button type="button" id="reset-entries-button">Reset sample</button>
+                <button type="button" id="generate-button" class="primary-button">Generate puzzle</button>
+                <button type="button" id="toggle-answer-button">Show answer</button>
+            </div>
+
+            <div class="section-heading-with-action">
+                <h2>Words And Clues</h2>
+                <button type="button" id="toggle-entries-visibility-button">Collapse</button>
+            </div>
+            <p class="helper-text">Each row needs a word and a clue sentence. Duplicate words and one-letter words are rejected.</p>
+            <div id="status-message" class="status-message" aria-live="polite"></div>
+
+            <table id="entries-table">
+                <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>Clue sentence</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="entries-body"></tbody>
+            </table>
+        </section>
+
+        <section class="panel output-panel">
+            <div class="output-header">
+                <div>
+                    <h2>Puzzle</h2>
+                    <p id="result-summary" class="helper-text">Generate a puzzle to see the grid and prompts.</p>
+                </div>
+            </div>
+
+            <div id="puzzle-wrapper" class="puzzle-wrapper"></div>
+
+            <div class="prompt-grid">
+                <section class="prompt-section">
+                    <h3>Row clues</h3>
+                    <ul id="row-prompts" class="prompt-list"></ul>
+                </section>
+                <section class="prompt-section">
+                    <h3>Column clues</h3>
+                    <ul id="col-prompts" class="prompt-list"></ul>
+                </section>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer" style="text-align: center;">
+        <p>GitHub Repository: <a href="https://github.com/XuYueming520/English_Helper" target="_blank" rel="noopener noreferrer">English Helper</a></p>
+        <p>License: MIT License</p>
+    </footer>
+</body>
+</html>

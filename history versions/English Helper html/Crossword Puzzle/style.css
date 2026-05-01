@@ -1,6 +1,6 @@
 body {
-    --wlen: calc(max(100vw, 750px) - 10px);
-    --hlen: max(100vh, 340px);
+    --wlen: calc(max(100vw, 800px) - 10px);
+    --hlen: max(100vh, 360px);
     --pzl_len: calc(min(var(--hlen) - 35px - 20px, var(--wlen) / 2) - 16px);
     
     padding: 0px;
@@ -46,40 +46,40 @@ ul {
 #help {
     width: calc(var(--wlen) / 8);
     text-align: right;
-    
-    a {
-        color: black;
-        text-decoration: none;
-    }
-    
-    span {
-        line-height: 16px;
-        font-size: 10px;
-        transition: 0.5s;
-    }
-    
-    span:after {
-        content: ">";
-        opacity: 0;
-    }
-    
-    :hover span {
-        padding-right: 10px;
-    }
-    
-    :hover span:after {
-        opacity: 1;
-    }
-    
-    img {
-        height: 16px;
-        border-radius: 50%;
-        vertical-align: middle;
-    }
-    
-    svg {
-        vertical-align: middle;
-    }
+}
+
+#help a {
+    color: black;
+    text-decoration: none;
+}
+
+#help span {
+    line-height: 16px;
+    font-size: 10px;
+    transition: 0.5s;
+}
+
+#help span:after {
+    content: ">";
+    opacity: 0;
+}
+
+#help :hover span {
+    padding-right: 10px;
+}
+
+#help :hover span:after {
+    opacity: 1;
+}
+
+#help img {
+    height: 16px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+#help svg {
+    vertical-align: middle;
 }
 
 #main {
@@ -103,38 +103,42 @@ ul {
 #rowNum {
     width: var(--pzl_len);
     height: 16px;
-    ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        line-height: 16px;
-        li {
-            width: var(--pzl_len);  /*  */
-            height: 16px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 400;
-        }
-    }
+}
+
+#rowNum ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 16px;
+}
+
+#rowNum ul li {
+    width: var(--pzl_len);  /*  */
+    height: 16px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 #colNum {
     width: 16px;
     height: var(--pzl_len);
-    ul {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        line-height: 16px;
-        li {
-            height: var(--pzl_len);  /*  */
-            width: 16px;
-            font-size: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
+}
+
+#colNum ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 16px;
+}
+
+#colNum ul li {
+    height: var(--pzl_len);  /*  */
+    width: 16px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #puzzle {
@@ -143,14 +147,15 @@ ul {
     border-spacing: 0;
     border-collapse: collapse;
     border: 1px solid black;
-    td {
-        border: 1px solid black;
-        text-align: center;
-        font-size: xx-large;
-        font-weight: bold;
-        padding: 0px;
-        /* width & height */
-    }
+}
+
+#puzzle td {
+    border: 1px solid black;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    padding: 0px;
+    /* width & height */
 }
 
 #rdiv {
@@ -176,10 +181,10 @@ ul {
 #words {
     border-spacing: 0;
     width: 100%;
+}
     
-    td {
-        padding: 5px;
-    }
+#words td {
+    padding: 5px;
 }
 
 .word {
@@ -216,8 +221,8 @@ ul {
     color: #ffff;
     text-align: center;
     font-size: calc((var(--pzl_len) + 16px) / 20);
+    line-height: calc((var(--pzl_len) + 16px) / 5.5);
     font-weight: 400;
-    padding: calc((var(--pzl_len) + 16px) / 20) 0px;
     cursor: pointer;
     margin: 5px;
     vertical-align: middle;
@@ -278,23 +283,24 @@ ul {
 
 #seed-setting {
     display: grid;
-    grid-template-columns: 45px calc(var(--pzl_len) / 4 - 60px);
+    grid-template-columns: auto auto;
     height: calc(min(16px, calc(var(--pzl_len) / 30)) + 6px);
     margin: 10px 5px;
     border: 1px dashed #1795bb;
     font-size: min(16px, calc(var(--pzl_len) / 30));
     border-radius: 5px;
     padding: 3px;
-    
-    span {
-        font-weight: 500;
-    }
+}
+
+#seed-setting span {
+    font-weight: 500;
 }
 
 #seed {
-    font-size: min(16px, calc(var(--pzl_len) / 30));
+    width: 90%;
     padding: 0px;
     padding-top: 3px;
+    margin-left: 5px;
     border: none;
     outline: none;
     font-size: inherit;
